@@ -81,6 +81,21 @@ func (list *MyArrayList) LastIndexOf(item interface{}) int {
 	return -1
 }
 
+func (list *MyArrayList) AddWithIndex(item interface{}, index int) {
+	if index <= list.ListSize && index >= 0 {
+		list.Objects = append(list.Objects[:index], item, list.Objects[index:])
+	}
+
+	if index > list.ListSize && index >= 0 {
+		list.Objects = append(list.Objects, item)
+	}
+}
+
+func (list *MyArrayList) Clear() {
+	list.Objects = nil
+	list.ListSize = 0
+}
+
 // type ListInterface interface {
 // 	Size() int
 // 	Contains(interface{}) bool
