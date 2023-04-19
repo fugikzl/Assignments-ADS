@@ -121,11 +121,11 @@ func (list *MyLinkedList) IndexOf(item interface{}) int {
 	currentNode := list.Head //starting form head
 	index := 0               //by defult is zero
 
-	for currentNode != nil {
-		if currentNode.Element == item {
+	for currentNode != nil { //like while
+		if currentNode.Element == item { //if when we incremeting indexes owr item is equal of elemt of node
 			return index
 		}
-		index++
+		index++ //increment idex
 		currentNode = currentNode.Next
 	}
 
@@ -134,8 +134,8 @@ func (list *MyLinkedList) IndexOf(item interface{}) int {
 
 func (list *MyLinkedList) LastIndexOf(item interface{}) int {
 	currentNode := list.Tail
-	index := list.ListSize - 1
-
+	index := list.ListSize - 1 //we starting from back cause it requires last
+	// same like IndexOf, but here we dicrementing
 	for currentNode != nil {
 		if currentNode.Element == item {
 			return index
