@@ -4,7 +4,7 @@ type ListInterface interface {
 	Size() int
 	Contains(interface{}) bool
 	Add(interface{})
-	AddWithIndex(interface{}, int)
+	// AddWithIndex(interface{}, int)
 	Remove(interface{}) bool
 	Clear()
 	Get(int) interface{}

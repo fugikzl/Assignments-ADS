@@ -29,8 +29,22 @@ func main() {
 		Gender: false,
 	}
 
-	arrayList := assignment2.NewMyArrayList(person1, person2, person3)
-	fmt.Println("The name of 2 person is:", arrayList.Get(1).(sampletypes.Person).Name)
-	fmt.Println("The name of 2 person is:", arrayList.Get(1).(sampletypes.Person).Name)
+	person4 := sampletypes.Person{
+		Name:   "Vladimir",
+		Job:    "Banker",
+		Age:    23,
+		Gender: true,
+	}
+
+	person5 := sampletypes.Person{
+		Name:   "Daniyar",
+		Job:    "manager",
+		Age:    19,
+		Gender: true,
+	}
+
+	var queueInStore assignment2.ListInterface = assignment2.NewMyArrayList(person1, person2, person3, person4, person5)
+	fmt.Println("The name of 2 person is:", queueInStore.Get(1).(sampletypes.Person).Name)
+	fmt.Println("\nPosition of Asel in queue is:", queueInStore.IndexOf(person3)+1)
 
 }

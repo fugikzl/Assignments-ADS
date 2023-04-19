@@ -54,9 +54,21 @@ func (list *MyArrayList) Get(index int) interface{} {
 	return nil
 }
 
-func (list *MyArrayList) Remove(index int) bool {
-	if index < list.Size() && index >= 0 {
-		list.Objects = append(list.Objects[:index], list.Objects[index+1:]...) // берем крч элементы до индекса и обьеденяем их с элементами после: [a,b,c,e,d] -> remove(2) -> [a,b] + [e,d]
+func (list *MyArrayList) Remove(item interface{}) bool {
+	for i := 0; i < list.ListSize; i++ {
+		if item == list.Objects[i] {
+			list.Objects = append(list.Objects[:i], list.Objects[i+1:]...)
+			list.ListSize--
+			return true
+		}
+	}
+	return false
+}
+
+func (list *MyArrayList) RemoveFomIndex(index int) bool {
+	if index < list.ListSize && index >= 0 {
+		list.Objects = append(list.Objects[:index], list.Objects[index+1:]...)
+		// берем крч элементы до индекса и обьеденяем их с элементами после: [a,b,c,e,d] -> remove(2) -> [a,b] + [e,d]
 		list.ListSize--
 		return true
 	}
