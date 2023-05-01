@@ -1,26 +1,21 @@
 package assignment3
 
-import (
-	"Assignments-ADS/sampletypes"
-	"strconv"
-)
-
 type HashNode struct {
-	Key   int //in our sample id of person
-	Value *sampletypes.Person
+	Key   Stringable //in our sample id of person
+	Value Stringable
 	Next  *HashNode
 }
 
-func NewHashNode(key int, value *sampletypes.Person) *HashNode {
+func NewHashNode(key Stringable, value Stringable) HashNode {
 	newNode := HashNode{
 		Key:   key,
 		Value: value,
 		Next:  nil,
 	}
 
-	return &newNode
+	return newNode
 }
 
 func (node *HashNode) ToString() string {
-	return strconv.Itoa(node.Key) + node.Value.Name + node.Value.Job //idk is there any better way to convert string from int
+	return node.Key.ToString() + " : " + node.Value.ToString()
 }
