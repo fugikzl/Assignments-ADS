@@ -1,6 +1,8 @@
-package sampletypes
+package assignment3
 
-import "math"
+import (
+	"math"
+)
 
 type PersonId struct {
 	Value uint64
@@ -23,4 +25,12 @@ func (person *PersonId) String() string {
 func (p *PersonId) HashCode() int {
 	var hashedValue int64 = int64(p.Value) * 2654435761
 	return int(math.Abs(float64(hashedValue ^ (hashedValue >> 32))))
+}
+
+func (pid *PersonId) Equals(other StringableHashable) bool {
+	otherPid, ok := other.(*PersonId)
+	if !ok {
+		return false
+	}
+	return pid.Value == otherPid.Value // Compare the values of the PersonIds
 }

@@ -1,5 +1,7 @@
 package assignment3
 
+import "fmt"
+
 type MyHashTable struct {
 	chainArray []*HashNode
 	m          int
@@ -33,19 +35,16 @@ func (t *MyHashTable) Put(key StringableHashable, value Stringable) {
 func (t *MyHashTable) Get(key StringableHashable) (StringableHashable, Stringable) {
 	h := t.hash(key)
 	for node := t.chainArray[h]; node != nil; node = node.Next {
-		if node.Key == key {
+		if key.Equals(node.Key) {
 			return node.Key, node.Value
 		}
 	}
 	return nil, nil
 }
 
-// public V get(K key) {
-// 	int h = hash(key);
-// 	for (HashNode<K, V> node = chainArray[h]; node != null; node = node.next) {
-// 		if (node.key.equals(key)) {
-// 			return node.value;
-// 		}
-// 	}
-// 	return null;
-// }
+func (t *MyHashTable) PrintChainArrayElement(i int) {
+	for node := t.chainArray[i]; node != nil; node = node.Next {
+		fmt.Print(node, " ")
+	}
+	fmt.Print("\n")
+}
