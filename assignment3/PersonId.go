@@ -1,6 +1,7 @@
 package assignment3
 
 import (
+	"Assignments-ADS/interfaces"
 	"math"
 )
 
@@ -27,7 +28,7 @@ func (p *PersonId) HashCode() int {
 	return int(math.Abs(float64(hashedValue ^ (hashedValue >> 32))))
 }
 
-func (pid *PersonId) Equals(other StringableHashable) bool {
+func (pid *PersonId) Equals(other interfaces.StringableHashable) bool {
 	otherPid, ok := other.(*PersonId)
 	if !ok {
 		return false

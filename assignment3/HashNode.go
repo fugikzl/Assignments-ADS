@@ -1,12 +1,16 @@
 package assignment3
 
+import (
+	"Assignments-ADS/interfaces"
+)
+
 type HashNode struct {
-	Key   StringableHashable //in our sample id of person
-	Value Stringable
+	Key   interfaces.StringableHashable //in our sample id of person
+	Value interfaces.Stringable
 	Next  *HashNode
 }
 
-func NewHashNode(key StringableHashable, value Stringable) HashNode {
+func NewHashNode(key interfaces.StringableHashable, value interfaces.Stringable) HashNode {
 	newNode := HashNode{
 		Key:   key,
 		Value: value,

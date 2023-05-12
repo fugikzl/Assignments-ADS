@@ -1,6 +1,9 @@
 package assignment3
 
-import "fmt"
+import (
+	"Assignments-ADS/interfaces"
+	"fmt"
+)
 
 type MyHashTable struct {
 	chainArray []*HashNode
@@ -18,11 +21,11 @@ func NewMyHashTable(m int) *MyHashTable {
 	return &table
 }
 
-func (t *MyHashTable) hash(key StringableHashable) int {
+func (t *MyHashTable) hash(key interfaces.StringableHashable) int {
 	return key.HashCode() % t.m
 }
 
-func (t *MyHashTable) Put(key StringableHashable, value Stringable) {
+func (t *MyHashTable) Put(key interfaces.StringableHashable, value interfaces.Stringable) {
 	h := t.hash(key)
 	node := HashNode{
 		Key:   key,
@@ -32,7 +35,7 @@ func (t *MyHashTable) Put(key StringableHashable, value Stringable) {
 	t.chainArray[h] = &node
 }
 
-func (t *MyHashTable) Get(key StringableHashable) (StringableHashable, Stringable) {
+func (t *MyHashTable) Get(key interfaces.StringableHashable) (interfaces.StringableHashable, interfaces.Stringable) {
 	h := t.hash(key)
 	for node := t.chainArray[h]; node != nil; node = node.Next {
 		if key.Equals(node.Key) {

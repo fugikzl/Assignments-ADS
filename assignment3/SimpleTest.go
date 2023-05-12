@@ -1,6 +1,7 @@
 package assignment3
 
 import (
+	"Assignments-ADS/interfaces"
 	"Assignments-ADS/sampletypes"
 	"fmt"
 )
@@ -8,14 +9,14 @@ import (
 func TestHashTable() {
 	t := NewMyHashTable(11)
 	for i := 0; i < 10000; i++ {
-		var p Stringable = &sampletypes.Person{
+		var p interfaces.Stringable = &sampletypes.Person{
 			Name:   "John",
 			Job:    "sample",
 			Age:    48,
 			Gender: true,
 		}
 
-		var pid StringableHashable = &PersonId{
+		var pid interfaces.StringableHashable = &PersonId{
 			Value: uint64(i),
 		}
 

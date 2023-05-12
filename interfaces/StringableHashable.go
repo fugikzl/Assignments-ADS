@@ -1,4 +1,4 @@
-package assignment3
+package interfaces
 
 type StringableHashable interface {
 	Stringable
