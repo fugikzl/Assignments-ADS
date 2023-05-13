@@ -41,9 +41,31 @@ func (BST *BinarySearchTree) Put(k int, v string) {
 	BST.size++
 }
 
-// func (BST *BinarySearchTree) Get(k int) string {
+func (BST *BinarySearchTree) get(k int, n *Node) *Node {
+	if n.key == k {
+		return n
+	}
 
-// }
+	if n.key < k {
+		return BST.get(k, n.Right)
+	}
+
+	if n.key > k {
+		return BST.get(k, n.Left)
+	}
+
+	return nil
+
+}
+
+func (BST *BinarySearchTree) Get(k int) string {
+	n := BST.get(k, BST.root)
+	if n == nil {
+		return "No foind"
+	}
+
+	return n.value
+}
 
 func (BST *BinarySearchTree) Delete(k int) {
 
